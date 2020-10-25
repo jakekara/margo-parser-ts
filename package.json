@@ -1,0 +1,49 @@
+{
+  "name": "margo-parser-ts",
+  "version": "0.0.1",
+  "description": "a parser for margo",
+  "main": "dist/index.js",
+  "scripts": {
+    "prettify": "npm run prettify:lint && npm run prettify:prettier",
+    "build": "npm run build:grammar && npm run clean && npm run build:webpack",
+    "test": "jest",
+    "debug:grammar": "nearley-test out/grammar.js --input",
+    "clean": "rm -rf dist",
+    "build:webpack": "webpack",
+    "build:grammar": "nearleyc src/grammar.ne -o src/grammar.ts",
+    "build:grammar:js": "sed 's/^@preprocessor typescript//g' ./src/grammar.ne | nearleyc -o out/grammar.js",
+    "prettify:prettier": "prettier src --write",
+    "prettify:lint": "eslint --fix src/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakekara/margo-parser-ts.git"
+  },
+  "author": "jake kara",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/jakekara/margo-parser-ts/issues"
+  },
+  "homepage": "https://github.com/jakekara/margo-parser-ts#readme",
+  "dependencies": {
+    "typescript": "^4.0.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.15",
+    "@types/nearley": "^2.11.1",
+    "@typescript-eslint/eslint-plugin": "^4.5.0",
+    "@typescript-eslint/parser": "^4.5.0",
+    "eslint": "^7.12.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^6.14.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.6.1",
+    "nearley": "^2.19.7",
+    "prettier": "^2.1.2",
+    "raw-loader": "^4.0.2",
+    "ts-jest": "^26.4.2",
+    "ts-loader": "^8.0.7",
+    "webpack": "^5.2.0",
+    "webpack-cli": "^4.1.0"
+  }
+}
