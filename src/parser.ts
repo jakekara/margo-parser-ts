@@ -3,12 +3,16 @@ import * as nearley from 'nearley'
 import grammar from './grammar'
 
 /**
- * get a line parser
+ * get a nearley line parser
  */
 export function getParser(): nearley.Parser {
     return new nearley.Parser(nearley.Grammar.fromCompiled(grammar))
 }
 
+/**
+ * Parse a line of source code
+ * @param {string} sourceString source to parse
+ */
 export function parse(sourceString: string): Array<unknown> {
     const sourceParser = getParser()
     sourceParser.feed(sourceString)

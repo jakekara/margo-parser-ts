@@ -1,4 +1,6 @@
 import { parse } from './parser'
+// import MargoParser from '../lib/'
+// const parse = MargoParser.parse
 
 test('parses empty block', () => {
     expect(parse('')).toStrictEqual([])
