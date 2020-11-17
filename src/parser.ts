@@ -1,4 +1,5 @@
 import * as nearley from 'nearley'
+import { MargoSyntaxError } from './api'
 // NOTE: grammar.ts file must be generated first;
 import grammar from './grammar'
 
@@ -16,5 +17,9 @@ export function getParser(): nearley.Parser {
 export function parse(sourceString: string): Array<unknown> {
     const sourceParser = getParser()
     sourceParser.feed(sourceString)
-    return sourceParser.results[0]
+    const result = sourceParser.results[0]
+    if (result === undefined) {
+        throw new MargoSyntaxError('Failed to parse code')
+    }
+    return result
 }

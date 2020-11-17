@@ -7,7 +7,7 @@
   "scripts": {
     "prettify": "npm run prettify:lint && npm run prettify:prettier",
     "build": "npm run build:grammar && npm run clean && npm run build:webpack && npm run build:types",
-    "test": "jest",
+    "test": "jest --silent=false",
     "debug:grammar": "nearley-test out/grammar.js --input",
     "clean": "rm -rf lib",
     "build:types": "tsc --project tsconfig.json",

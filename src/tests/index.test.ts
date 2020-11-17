@@ -1,4 +1,4 @@
-import { parse } from './parser'
+import { parse } from '../parser'
 // import MargoParser from '../lib/'
 // const parse = MargoParser.parse
 

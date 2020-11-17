@@ -1,5 +1,6 @@
 // import { parse } from './parser'
-import { getDeclaredValue } from './api'
 import * as api from './api'
+import getCellPreamble from './utils/getCellPreamble'
 
-export { api, getDeclaredValue }
+const utils = { getCellPreamble }
+export { api, utils }

@@ -49,8 +49,19 @@ export const EMPTY_BLOCK: IMargoBlock = {
     statements: [],
 }
 
+export class MargoSyntaxError extends Error {
+    constructor(message: string) {
+        super(message)
+    }
+}
+
 export function convertToMargoBlock(sourceCode: string): IMargoBlock {
-    const parsed: Array<unknown> = parse(sourceCode)
+    let parsed: Array<unknown>
+    try {
+        parsed = parse(sourceCode)
+    } catch {
+        throw new MargoSyntaxError('Failed to parse code block')
+    }
     const statements: Array<IMargoStatement> = []
     parsed.forEach((line: unknown) => {
         if (Array.isArray(line)) {
